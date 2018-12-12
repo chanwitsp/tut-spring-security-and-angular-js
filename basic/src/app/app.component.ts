@@ -8,8 +8,11 @@ import { HttpClient } from '@angular/common/http';
 })
 export class AppComponent {
   title = 'Demo';
-  greeting = {};
+  greeting = {id: null, content: null};
   constructor(private http: HttpClient) {
-    http.get('resource').subscribe(data => this.greeting = data);
+    http.get('resource').subscribe(data => {
+      this.greeting.id = data['id'];
+      this.greeting.content = data['content'];
+    });
   }
 }
